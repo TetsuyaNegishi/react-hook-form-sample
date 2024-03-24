@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as Simple2Import } from './routes/simple2'
 import { Route as SimpleImport } from './routes/simple'
+import { Route as NestedFieldImport } from './routes/nested-field'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
@@ -27,6 +28,11 @@ const SimpleRoute = SimpleImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const NestedFieldRoute = NestedFieldImport.update({
+  path: '/nested-field',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
@@ -38,6 +44,10 @@ declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/nested-field': {
+      preLoaderRoute: typeof NestedFieldImport
       parentRoute: typeof rootRoute
     }
     '/simple': {
@@ -55,6 +65,7 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
+  NestedFieldRoute,
   SimpleRoute,
   Simple2Route,
 ])

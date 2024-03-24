@@ -9,6 +9,9 @@ export const Route = createFileRoute("/")({
       <p>
         <Link to="/simple2">simple2</Link>
       </p>
+      <p>
+        <Link to="/nested-field">nested-field</Link>
+      </p>
     </div>
   ),
 });
