@@ -15,6 +15,9 @@ export const Route = createFileRoute("/")({
       <p>
         <Link to="/nested-field-controller">nested-field-controller</Link>
       </p>
+      <p>
+        <Link to="/dynamic-field">dynamic-field</Link>
+      </p>
     </div>
   ),
 });
