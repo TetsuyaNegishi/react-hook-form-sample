@@ -18,6 +18,9 @@ export const Route = createFileRoute("/")({
       <p>
         <Link to="/dynamic-field">dynamic-field</Link>
       </p>
+      <p>
+        <Link to="/dynamic-field2">dynamic-field2</Link>
+      </p>
     </div>
   ),
 });
