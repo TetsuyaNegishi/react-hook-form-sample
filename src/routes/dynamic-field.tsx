@@ -1,17 +1,17 @@
+import {
+  Button,
+  Checkbox,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
+import { DevTool } from "@hookform/devtools";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Controller, useFieldArray, useForm, useWatch } from "react-hook-form";
-import z, { TypeOf } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  FormErrorMessage,
-  Button,
-  Checkbox,
-} from "@chakra-ui/react";
-import { DevTool } from "@hookform/devtools";
+import z, { type TypeOf } from "zod";
 
 const schema = z.object({
   options: z.object({
@@ -23,7 +23,7 @@ const schema = z.object({
       z.object({
         size: z.string(),
         flavor: z.string(),
-      })
+      }),
     )
     .optional(),
 });

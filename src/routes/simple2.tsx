@@ -1,16 +1,16 @@
+import {
+  Button,
+  Checkbox,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { boolean, object, string, TypeOf } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  FormErrorMessage,
-  Button,
-  Checkbox,
-} from "@chakra-ui/react";
+import { type TypeOf, boolean, object, string } from "zod";
 
 const schema = object({
   name: string().min(1, "Name is required"),
@@ -18,7 +18,7 @@ const schema = object({
   password: string().min(8, "Password must be at least 8 characters long"),
   termsAccepted: boolean().refine(
     (val) => val === true,
-    "You must accept the terms"
+    "You must accept the terms",
   ),
 });
 

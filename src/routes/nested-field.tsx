@@ -1,16 +1,16 @@
+import {
+  Button,
+  Checkbox,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import z, { TypeOf } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  FormErrorMessage,
-  Button,
-  Checkbox,
-} from "@chakra-ui/react";
+import z, { type TypeOf } from "zod";
 
 const schema = z.object({
   options: z.object({

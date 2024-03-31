@@ -1,16 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
-import { Controller, useForm, useWatch } from "react-hook-form";
-import z, { TypeOf } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
+  Button,
+  Checkbox,
   FormControl,
   FormLabel,
   Input,
-  Button,
-  Checkbox,
 } from "@chakra-ui/react";
 import { DevTool } from "@hookform/devtools";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useMemo, useState } from "react";
+import { Controller, useForm, useWatch } from "react-hook-form";
+import z, { type TypeOf } from "zod";
 
 const schema = z.object({
   options: z.object({
@@ -49,7 +49,7 @@ const FormExample = () => {
   const optionsValueArray = useMemo(() => {
     return Object.entries(optionsValue ?? {}).flatMap(([key, value]) => {
       if (!value) return [];
-      return [key] as any;
+      return key as "drink" | "potato";
     });
   }, [optionsValue]);
 
@@ -126,9 +126,11 @@ type TypeProps = {
   onChange: (value: ValueType) => void;
 };
 const Type: React.FC<TypeProps> = ({ options, value, onChange }) => {
+  // biome-ignore lint/correctness/useExhaustiveDependencies: onChange
   useEffect(() => {
     const newValue = options.reduce<ValueType>((prev, current) => {
-      return { ...prev, [current]: value[current] };
+      prev[current] = value[current];
+      return prev;
     }, {});
     onChange(newValue);
   }, [options]);
